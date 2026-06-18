@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --primary-blue:#0a1a29;
-    --primary-purple:#4a30e0;
-    --accent-yellow:#ffd54f;
-    --accent-green:#25D366;
-    --text-white:#ffffff;
-    --text-dark:#222222;
+    --bg:#050505;
+    --card:#111111;
+    --green:#9DFF00;
+    --green-dark:#5fbf00;
+    --white:#ffffff;
+    --gray:#bbbbbb;
+    --shadow:0 0 25px rgba(157,255,0,.25);
     --radius:16px;
-    --shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 *{
@@ -27,7 +29,7 @@
 }
 
 body{
-    background:linear-gradient(135deg,#0a1a29,#4a30e0);
+    background:#050505;
     color:white;
     min-height:100vh;
 }
@@ -38,24 +40,51 @@ body{
     margin:auto;
 }
 
-/* HEADER */
+/* HERO */
 
 .hero{
     text-align:center;
-    padding:80px 20px 50px;
+    padding:60px 20px;
+}
+
+.hero-image{
+    width:320px;
+    max-width:95%;
+    border-radius:20px;
+    margin-bottom:25px;
+    box-shadow:var(--shadow);
 }
 
 .hero h1{
-    font-size:3rem;
-    color:var(--accent-yellow);
-    margin-bottom:15px;
+    font-size:3.5rem;
+    color:white;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:var(--green);
 }
 
 .hero p{
-    font-size:1.1rem;
+    font-size:1.15rem;
     max-width:750px;
-    margin:auto;
+    margin:20px auto;
+    color:#ddd;
     line-height:1.7;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-top:30px;
+}
+
+.stats div{
+    background:#111;
+    border:1px solid #222;
+    padding:15px;
+    border-radius:12px;
 }
 
 /* FEATURES */
@@ -68,13 +97,14 @@ body{
 }
 
 .card{
-    background:white;
-    color:#222;
+    background:#111;
+    color:white;
     border-radius:16px;
     padding:25px;
     text-align:center;
     box-shadow:var(--shadow);
     transition:.3s;
+    border:1px solid #222;
 }
 
 .card:hover{
@@ -88,6 +118,7 @@ body{
 
 .card h3{
     margin-bottom:10px;
+    color:var(--green);
 }
 
 /* PRICE */
@@ -95,15 +126,17 @@ body{
 .price-box{
     margin:60px auto;
     text-align:center;
-    background:rgba(255,255,255,.08);
+    background:#111;
     padding:40px;
     border-radius:20px;
-    backdrop-filter:blur(10px);
+    border:1px solid #222;
+    box-shadow:var(--shadow);
 }
 
 .badge{
     display:inline-block;
-    background:#ff4d4d;
+    background:var(--green);
+    color:black;
     padding:10px 20px;
     border-radius:50px;
     font-weight:700;
@@ -112,13 +145,13 @@ body{
 
 .price{
     font-size:3rem;
-    color:var(--accent-yellow);
+    color:var(--green);
     font-weight:800;
 }
 
 .old-price{
     text-decoration:line-through;
-    color:#ccc;
+    color:#999;
 }
 
 .buttons{
@@ -127,29 +160,29 @@ body{
 
 .btn{
     display:inline-block;
-    padding:15px 30px;
+    padding:16px 35px;
     margin:10px;
-    border-radius:12px;
+    border-radius:50px;
     text-decoration:none;
     font-weight:700;
     transition:.3s;
 }
 
-.btn-gumroad{
-    background:#ffd54f;
-    color:#111;
+.btn-whop{
+    background:var(--green);
+    color:black;
 }
 
-.btn-whop{
-    background:#6a4c93;
-    color:white;
+.btn-gumroad{
+    background:white;
+    color:black;
 }
 
 .btn:hover{
-    transform:translateY(-3px);
+    transform:translateY(-3px) scale(1.03);
 }
 
-/* BONUS SECTION */
+/* BONUS */
 
 .bonus{
     display:grid;
@@ -159,10 +192,11 @@ body{
 }
 
 .bonus-card{
-    background:rgba(255,255,255,.08);
+    background:#111;
     padding:25px;
     border-radius:16px;
     text-align:center;
+    border:1px solid #222;
 }
 
 /* AUTHOR */
@@ -173,7 +207,7 @@ body{
 }
 
 .author h3{
-    color:var(--accent-yellow);
+    color:var(--green);
 }
 
 /* WHATSAPP */
@@ -184,7 +218,7 @@ body{
 }
 
 .whatsapp a{
-    background:var(--accent-green);
+    background:#25D366;
     color:white;
     text-decoration:none;
     padding:15px 25px;
@@ -203,7 +237,7 @@ footer{
 @media(max-width:768px){
 
 .hero h1{
-    font-size:2.2rem;
+    font-size:2.3rem;
 }
 
 .price{
@@ -211,21 +245,51 @@ footer{
 }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<section class="hero container">
-    <h1>🚀 Affiliate Marketing Mastery: Instant Access Guide</h1>
+<!-- Background Music -->
 
-    <p>
-        Imagine having a clear roadmap that shows you exactly how affiliate marketing works,
-        even if you've never made a single dollar online before.
-    </p>
+<audio autoplay loop id="bgMusic">
+<source src="https://files.catbox.moe/yyc4bs.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener('click',function(){
+document.getElementById('bgMusic').play();
+},{once:true});
+</script>
+
+<section class="hero container">
+
+<img src="book-cover.jpg" alt="Affiliate Marketing Guide" class="hero-image">
+
+<h1>
+MASTER AFFILIATE MARKETING
+<span>IN 2026</span>
+</h1>
+
+<p>
+A Beginner's Step-by-Step Guide To Earning From Home
+</p>
+
+<div class="stats">
+<div>📚 390+ Pages</div>
+<div>👨‍🎓 Beginner Friendly</div>
+<div>✅ Step-By-Step Guide</div>
+<div>♾️ Lifetime Access</div>
+</div>
+
 </section>
 
 <div class="container">
+
+<section class="hero">
+<h2 style="color:#9DFF00;">What You'll Learn</h2>
+</section>
 
 <div class="features">
 
@@ -295,14 +359,18 @@ footer{
 
 <p>Normally <span class="old-price">$32</span></p>
 
+<p style="margin-top:10px;">
+390+ Pages Of Proven Affiliate Marketing Training
+</p>
+
 <div class="buttons">
 
-<a href="https://suleiman218.gumroad.com/l/owltjy" class="btn btn-gumroad">
-GET IT ON GUMROAD
+<a href="https://whop.com/digital-educational-guide-ed29/make-money-through-affiliate-marketing-2026-guide/" class="btn btn-whop">
+🔥 ACCESS ON WHOP
 </a>
 
-<a href="https://https://whop.com/digital-educational-guide-ed29/make-money-through-affiliate-marketing-2026-guide//" class="btn btn-whop">
-GET IT ON WHOP
+<a href="https://suleiman218.gumroad.com/l/owltjy" class="btn btn-gumroad">
+🚀 ACCESS ON GUMROAD
 </a>
 
 </div>
